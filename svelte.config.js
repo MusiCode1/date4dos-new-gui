@@ -1,6 +1,6 @@
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
-const dev = true///process.env.NODE_ENV === 'development';
+const dev = false;///process.env.NODE_ENV === 'development';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -12,9 +12,12 @@ const config = {
 		prerender: {
 			default: true
 		},
-		adapter: adapter(),
+		adapter: adapter({
+			pages: "docs",
+			assets: "docs"
+		}),
 		paths: {
-			base: dev ? '' : '/your-repo-name',
+			base: dev ? '' : '/date4dos-new-gui',
 		},
 		// If you are not using a .nojekyll file, change your appDir to something not starting with an underscore.
 		// For example, instead of '_app', use 'app_', 'internal', etc.
